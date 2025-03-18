@@ -6,39 +6,77 @@ package com.mycompany._ra6_pt11_1_matveinikitamartinezisel;
  * @author nikita i isel
  */
 public class QuadratMagic {
+
     /*Declaració de variables i atributs*/
-    private int quadrat[][];
-    private final static int NUM_COLUMNES_DEFAULT = 3;
-    private final static int NUM_FILES_DEFAULT = 3;
-    
+    protected int quadrat[][];
+    private final static int DIMENSIÓ_PREDETERMINADA = 3;
+
     /**
      * Constructor per defecte que truca al constructor parametritzat
      */
-    public QuadratMagic(){
-        this(NUM_COLUMNES_DEFAULT, NUM_FILES_DEFAULT);
+    public QuadratMagic() {
+        this(DIMENSIÓ_PREDETERMINADA);
     }
-    
+
     /**
-     * Constructor paramatritzat que rep el nombre de columnes i fileres
+     * Constructor parametritzat que dona la dimensió a la matriu en base al
+     * paràmetre que rep
      * 
-     * @param columnes
-     * @param files 
+     * @param dimensio 
      */
-    public QuadratMagic (int columnes, int files){
-        this.quadrat = new int [files][columnes];
+    public QuadratMagic(int dimensio) {
+        this.quadrat = new int[dimensio][dimensio];
     }
-    
+
     /**
-     * Mètode comprovarQuadratMagic que repc com a paràmetre 
-     * 
+     * Mètode comprovarQuadratMagic que repc com a paràmetre
+     *
      * @param magic[][]
      * @return comprovacio
      */
-    public boolean comprovarQuadratMagic(int magic[][]){
+    public boolean comprovarQuadratMagic(int magic[][]) {
+        /*Declaració de variables*/
+        int i, nombre, resultat;
         magic = this.quadrat;
         boolean comprovacio = false;
+        boolean comprovacioVertical = true;
+        boolean comprovacioHoritzontal = true;
+        boolean comrpovacioDiagonal1 = true;
+        boolean comprovacioDiagonal2 = true;
         
+        /*Comprovarem si la suma dels valors horitzontalment, és la mateixa en 
+        cada filera*/
+        i = 0;
+        resultat = 0;
+        nombre = 0;
+        while(i < magic.length && comprovacioVertical){
+            for (int j = 0; j < magic[i].length; j++) {
+                resultat += magic[i][j];
+            }
+            if (i == 0){
+                nombre = resultat;
+            }
+            if (nombre != resultat){
+                comprovacioVertical = false;
+            }
+        }
         
+        /*Comprovem si la suma dels valors verticalment és la mateixa en cada 
+        columne*/
+        i = 0;
+        resultat = 0;
+        
+        /*Comrpovem la suma dels valors de la primera diagonal (d'esquerre a dreta)*/
+        
+        /*Comrpovem la suma dels valors de la segona diagonal (de dreta a esquerre)*/
+        
+        /*Comprovacio final*/
+        if (comprovacioVertical && comprovacioHoritzontal && comrpovacioDiagonal1
+            && comprovacioDiagonal2){
+            comprovacio = true;
+        }
+        
+        /*Retornem la comprovació*/
         return comprovacio;
     }
 }
