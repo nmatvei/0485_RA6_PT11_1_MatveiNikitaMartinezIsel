@@ -10,22 +10,32 @@ import java.util.Scanner;
 public class Principal {
 
     public static void main(String[] args) {
+        /*Declaracio de variables*/
         String opcio;
+        /*Inicialitzacio de scanner*/
         Scanner sc = new Scanner(System.in);
+        
+         /* Mostrem informació a l'usuari */
         System.out.println("COMPROVAR SI EL TEU QUADRAT ÉS UN QUADRAT MÀGIC");
         System.out.println("Es crearà un quadrat on podràs introduïr els valors "
                 + "en cada camp, vols cambiar la seva grandària? (si no ho fas "
                 + "la taula serà de 3X3)");
         System.out.print("Escriur la teva resposta (S/N): ");
+        
+        /* Llegim la resposta de l'usuari */
         opcio = sc.nextLine();
+        /* Verifiquem l'opció triada per l'usuari */
         if (opcio.equalsIgnoreCase("S")){
             System.out.print("Introdueix la gràndaria del teu quadrat: ");
             int dimensio = llegirEnterTeclat();
+            /*Creem el quadrat magic amb la dimensio especificada*/
             QuadratMagic quadrat = new QuadratMagic(dimensio);
         }
+        /*En cas de que l'usuari premi Negatiu creem un objecte sense informació*/ 
         else if (opcio.equalsIgnoreCase("N")){
             QuadratMagic quadrat = new QuadratMagic();
         }
+        
         else {
             System.out.println("ERROR: Has introduït una dimensió invàlida");
         }
