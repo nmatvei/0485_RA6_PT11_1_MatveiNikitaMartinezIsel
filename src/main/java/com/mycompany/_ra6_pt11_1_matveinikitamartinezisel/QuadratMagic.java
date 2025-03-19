@@ -55,7 +55,7 @@ public class QuadratMagic {
      * Mètode esMagic que repc com a paràmetre una matriu quadrada per veure si
      * aquesta és màgica
      *
-     * @return comprovacio
+     * @return si és màgic o no
      */
     public boolean esMagic() {
         /*Declaració de variables*/
@@ -63,9 +63,9 @@ public class QuadratMagic {
 
         /*Comprovarem si la suma dels valors horitzontalment, és la mateixa en 
         cada filera*/
-        resultat = 0;
         nombre = 0;
         for (int i = 0; i < dimensio; i++) {
+            resultat = 0;
             for (int j = 0; j < dimensio; j++) {
                 resultat += quadrat[i][j];
 
@@ -76,15 +76,21 @@ public class QuadratMagic {
             if (i == 0) {
                 nombre = resultat;
             }
-            if (resultat != nombre || resultatDiagonal != nombre) {
+            if (resultat != nombre) {
                 return false;
             }
+        }
+        
+        /*Comprovem que la primera diagonal (de dalt a baix i esquerra a dreta) 
+        dona el mateix que les fileres*/
+        if (resultatDiagonal != nombre){
+            return false;
         }
 
         /*Comprovem si la suma dels valors verticalment son els mateixos en cada 
         columne*/
-        resultat = 0;
         for (int i = 0; i < dimensio; i++) {
+            resultat = 0;
             for (int j = 0; j < dimensio; j++) {
                 resultat += quadrat[j][i];
             }
